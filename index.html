@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Average of Array</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h3 {
+            color: #333;
+            margin-top: 20px;
+        }
+        span {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter numbers to find their average</h2>
+        <input type="number" id="numInput" placeholder="Enter a number">
+        <button onclick="addNumber()">Add Number</button>
+        <button onclick="calculateAverage()">Calculate Average</button>
+
+        <h3>Numbers: <span id="numbers"></span></h3>
+        <h3>Average: <span id="average"></span></h3>
+    </div>
+
+    <script>
+        let numbersArray = [];
+
+        function addNumber() {
+            const numInput = document.getElementById("numInput");
+            const numValue = parseInt(numInput.value);
+
+            if (!isNaN(numValue)) {
+                numbersArray.push(numValue);
+                document.getElementById("numbers").textContent = numbersArray.join(", ");
+                numInput.value = ""; // Clear input after adding the number
+            }
+        }
+
+        function calculateAverage() {
+            if (numbersArray.length === 0) {
+                alert("Please add some numbers first.");
+                return;
+            }
+
+            const sum = numbersArray.reduce((a, b) => a + b, 0);
+            const average = sum / numbersArray.length;
+
+            document.getElementById("average").textContent = average.toFixed(2);
+        }
+    </script>
+</body>
+</html>
